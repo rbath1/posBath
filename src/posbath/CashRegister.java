@@ -4,18 +4,23 @@
  */
 package posbath;
 
+import java.text.NumberFormat;
+
 /**
  *
  * @author rbath1
  */
 public class CashRegister {
     private Receipt receipt = new Receipt();
-    public CashRegister(){
-    }
+    NumberFormat nf = NumberFormat.getCurrencyInstance();
+    
+   public CashRegister(){
+   }
+   
    private Product[] products = new Product[] {
-    new Product("A111","Hat",9.99),
-    new Product("B222","Bat",29.99),
-    new Product("C333","Glove",39.99)
+    new Product("A111","Hat",9.99,new NoDiscountStrategy()),
+    new Product("B222","Bat",29.99, new FallSaleStrategy()),
+    new Product("C333","Glove",39.99, new ClearanceStrategy())
    };
    private Customer[] customer = new Customer[]{
        new Customer("Frank Stallone", 001235),
@@ -35,8 +40,16 @@ public class CashRegister {
             
         }
    }
- public double getSubTotal(){
-    return receipt.getTotalBeforeDiscount();
+     public void printReceipt(){
+      System.out.println("Customer: ");
+      System.out.println("----------------------------------------");
+      System.out.println("Item#---Description---Price----Quantity");
+      receipt.printProductInfo();
+      System.out.println("Subtotal: " + nf.format(receipt.getTotalBeforeDiscount()));
+      System.out.println("Tax: " + nf.format(receipt.getTax()));
+      System.out.println("Discount: " + nf.format(receipt.getTotalDiscount()));
+      System.out.println("Total: " + nf.format(receipt.getGrandTotal()));
+             
  }
    
     

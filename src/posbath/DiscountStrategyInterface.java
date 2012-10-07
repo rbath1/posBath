@@ -9,6 +9,6 @@ package posbath;
  * @author rbath1
  */
 public interface DiscountStrategyInterface {
-    public abstract void discountStrategy();
+    public abstract double discountStrategy();
     
 }

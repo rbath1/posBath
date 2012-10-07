@@ -10,6 +10,10 @@ package posbath;
  */
 public class Receipt {
     private LineItem[] lineItems = new LineItem[0];
+    private double subTotal;
+    private double discountInDollars;
+    private double total;
+    private final double TAX = .051;
     public Receipt(){
     }
       // Here's how to add a purchased product as a LineItem
@@ -17,7 +21,6 @@ public class Receipt {
         LineItem item = new LineItem(product, qty);
         addToArray(item);
     }
-    
     private void addToArray(LineItem item) {
         LineItem[] tempItems = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempItems, 0, lineItems.length);
@@ -25,11 +28,34 @@ public class Receipt {
         lineItems = tempItems;
     }
     public double getTotalBeforeDiscount() {
-        double grandTotal = 0.0;
         for(LineItem item : lineItems) {
-            grandTotal += item.getOrigPriceSubtotal();
+            subTotal += item.getOrigPriceSubtotal();
         }
-        return grandTotal;
+        return subTotal;
     }
     
+    public double getTotalDiscount(){
+        for(LineItem item : lineItems){
+            discountInDollars += item.getLineItemDiscount();
+        }
+        return discountInDollars;
+    }
+    public double getTax(){
+        return subTotal * TAX;
+    }
+    public double getGrandTotal(){
+        return ((this.getTax() + subTotal) - discountInDollars);
+        
+        
+    }
+     public void printProductInfo(){
+         
+       for (LineItem item : lineItems) {
+        System.out.println(item.getProductNumber() + "       " + 
+                item.getProductDesc() + "         " + item.getProductPrice() + 
+                "         " + item.getQty());
+       }  
+       
+       
+   }
 }

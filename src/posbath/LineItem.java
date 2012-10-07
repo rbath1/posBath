@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package posbath;
 
 /**
@@ -22,10 +18,21 @@ public class LineItem {
         subTotal = product.getUnitPrice() * qty;
         return subTotal;
     }
-    public Product getProduct(){
-        return product;
+    
+    public double getLineItemDiscount(){
+        return this.getOrigPriceSubtotal() * product.getDiscountPercentage();
     }
+    
     public int getQty(){
         return qty;
     }
+    public String getProductNumber(){
+        return product.getProdId();
+    }
+    public String getProductDesc(){
+        return product.getDescription();
+    }
+    public double getProductPrice(){
+        return product.getUnitPrice();
+    } 
 }
