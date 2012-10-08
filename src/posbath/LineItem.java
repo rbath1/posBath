@@ -2,7 +2,8 @@ package posbath;
 
 /**
  *
- * @author rbath1
+ * @author Robert Bath
+ * @version 1.1
  */
 public class LineItem {
     private Product product = new Product();
@@ -13,7 +14,7 @@ public class LineItem {
         this.qty = qty;
     }
     
-    public double getOrigPriceSubtotal(){
+    public final double getOrigPriceSubtotal(){
         double subTotal;
         subTotal = product.getUnitPrice() * qty;
         return subTotal;
@@ -23,16 +24,16 @@ public class LineItem {
         return this.getOrigPriceSubtotal() * product.getDiscountPercentage();
     }
     
-    public int getQty(){
+    public final int getQty(){
         return qty;
     }
-    public String getProductNumber(){
+    public final String getProductNumber(){
         return product.getProdId();
     }
-    public String getProductDesc(){
+    public final String getProductDesc(){
         return product.getDescription();
     }
-    public double getProductPrice(){
+    public final double getProductPrice(){
         return product.getUnitPrice();
     } 
 }

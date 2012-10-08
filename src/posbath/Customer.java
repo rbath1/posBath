@@ -1,21 +1,28 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package posbath;
 
 /**
  *
- * @author rbath1
+ * @author Robert Bath
+ * @version 1.1
  */
 public class Customer {
     private String custName;
-    private int custID;
+    private String custID;
     
-    public Customer(String custName, int custID){
+    
+    public Customer(String custName, String custID){
         this.custName = custName;
         this.custID = custID;
     }
+    public Customer(String custName){
+        this.custName = custName;
+    }
     
+    public final String getCustName(){
+        return custName;
+    }
+    public final String getCustID(){
+        return custID;
+    }
     
 }

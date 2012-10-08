@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package posbath;
 
 /**
  *
- * @author rbath1
+ * @author Robert Bath
+ * @version 1.1
  */
 public interface DiscountStrategyInterface {
     public abstract double discountStrategy();

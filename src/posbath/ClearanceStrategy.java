@@ -1,16 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package posbath;
 
 /**
  *
- * @author Bob
+ * @author Robert Bath
+ * @version 1.1
  */
 public class ClearanceStrategy implements DiscountStrategyInterface {
+    private static final double CLRNCE = .5;
+    @Override
     public double discountStrategy(){
-        return .5;
+        return CLRNCE;
     }
     
 }

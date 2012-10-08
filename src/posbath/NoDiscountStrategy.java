@@ -1,17 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package posbath;
 
 /**
  *
- * @author Bob
+ * @author Robert Bath
+ * @version 1.1
  */
 public class NoDiscountStrategy implements DiscountStrategyInterface {
+    private static final double NONE = 0;
     @Override
     public double discountStrategy(){
-        return 0;
+        return NONE;
     }
     
 }

@@ -1,23 +1,19 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package posbath;
 
+import java.text.NumberFormat;
 /**
- *
- * @author rbath1
+ * @author Robert Bath
+ * @version 1.1
  */
 public class Receipt {
     private LineItem[] lineItems = new LineItem[0];
     private double subTotal;
     private double discountInDollars;
-    private double total;
     private final double TAX = .051;
+    private NumberFormat nf = NumberFormat.getCurrencyInstance();
     public Receipt(){
     }
-      // Here's how to add a purchased product as a LineItem
-    public void addLineItem(Product product, int qty) {
+    public final void addLineItem(Product product, int qty) {
         LineItem item = new LineItem(product, qty);
         addToArray(item);
     }
@@ -27,32 +23,34 @@ public class Receipt {
         tempItems[lineItems.length] = item;
         lineItems = tempItems;
     }
-    public double getTotalBeforeDiscount() {
+    public final double getTotalBeforeDiscount() {
         for(LineItem item : lineItems) {
             subTotal += item.getOrigPriceSubtotal();
         }
         return subTotal;
     }
     
-    public double getTotalDiscount(){
+    public final double getTotalDiscount(){
         for(LineItem item : lineItems){
             discountInDollars += item.getLineItemDiscount();
         }
         return discountInDollars;
     }
+    
     public double getTax(){
         return subTotal * TAX;
     }
+    
     public double getGrandTotal(){
-        return ((this.getTax() + subTotal) - discountInDollars);
-        
-        
+        return ((this.getTax() + subTotal) - discountInDollars); 
     }
-     public void printProductInfo(){
+    
+     public final void printProductInfo(){
          
        for (LineItem item : lineItems) {
         System.out.println(item.getProductNumber() + "       " + 
-                item.getProductDesc() + "         " + item.getProductPrice() + 
+                item.getProductDesc() + "         " + 
+                nf.format(item.getProductPrice()) + 
                 "         " + item.getQty());
        }  
        
