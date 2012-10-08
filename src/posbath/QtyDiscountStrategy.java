@@ -11,6 +11,7 @@ package posbath;
  * 
  * @param MIN_AMT -constant variable for minimum quantity for discount
  * @param MAX_AMT -constant variable for maximum quantity for discount
+ * @param percent - percentage of discount (based on quantity amounts)
  */
 public class QtyDiscountStrategy implements DiscountStrategyInterface{
     private final int MIN_AMT = 5;
@@ -32,8 +33,11 @@ public class QtyDiscountStrategy implements DiscountStrategyInterface{
     
     @Override
     public void setDiscountPercent(double percent){
-        this.setDiscountPercent(percent);
-        
+        this.percent = percent;
+    }
+    
+    public double getDiscountPercent(){
+        return percent;
     }
     
 }
