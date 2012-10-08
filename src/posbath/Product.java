@@ -1,7 +1,14 @@
 package posbath;
 /**
  * @author Robert Bath
- * @version 1.1
+ * @version 1.11
+ * 
+ * Product class stores information of all available products
+ * 
+ * @param productNumber the product ID number
+ * @param description description of the product
+ * @param unitPrice price of single product
+ * @param discountStrategy discount strategy object for percentage/qty discounts
  */
 public class Product {
     private String productID;
@@ -18,8 +25,9 @@ public class Product {
     }
     public Product(){
     }
-    public final double getDiscountPercentage(){
-       return discountStrategy.discountStrategy();
+    public final double getDiscountAmount(double price, int qty){
+        //validate
+       return discountStrategy.getDiscountAmount(price, qty);
     }
     public final String getProdId(){
         return productID;

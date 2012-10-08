@@ -1,9 +1,13 @@
 package posbath;
-
 /**
  *
  * @author Robert Bath
- * @version 1.1
+ * @version 1.11
+ * 
+ * This class is used for storing items of a sale/receipt and calculating subtotals
+ * 
+ * @param product -Class calls product object 
+ * @param qty - class stores quantity amount for called product
  */
 public class LineItem {
     private Product product = new Product();
@@ -21,8 +25,9 @@ public class LineItem {
     }
     
     public double getLineItemDiscount(){
-        return this.getOrigPriceSubtotal() * product.getDiscountPercentage();
+        return product.getDiscountAmount(product.getUnitPrice(), qty);
     }
+     
     
     public final int getQty(){
         return qty;
