@@ -18,7 +18,7 @@ public class Startup {
        register.setCustomerID("003212");
        
 
-       register.printReceipt();
+       register.outputReceipt();
         
     }
 }

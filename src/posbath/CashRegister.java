@@ -59,7 +59,7 @@ public class CashRegister {
            }
        }
    }
-     public void printReceipt(){
+     public void outputReceipt(){
       System.out.println("Customer: " + customer.getCustName() + "       ID#" +
               customer.getCustID());
       System.out.println("----------------------------------------");
