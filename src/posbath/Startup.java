@@ -14,11 +14,11 @@ public class Startup {
        CashRegister register = new CashRegister();
        
        register.addItemToSale("A111", 5);
-//     register.addItemToSale("B222", 2);
+     register.addItemToSale("B222", 2);
        register.setCustomerID("003212");
        
 
-       register.outputReceipt();
+       register.endSale();
         
     }
 }
